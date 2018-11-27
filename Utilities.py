@@ -27,9 +27,11 @@ def get_numerical_distrbution(column, filter_rate=0):
     sns.distplot(column, label=column.name, ax=axs[0])
     axs[0].axvline(x=mean, color='r', label='Mean: ' + str(mean))
     axs[0].legend()
+    axs[0].set_title('Numerical distribution for ' column.name)
     
     # Plot Boxplot
     sns.boxplot(column, ax=axs[1], linewidth=2.5)
+    axs[1].set_title('Boxplot for ' column.name)
     
     plt.show()
 
@@ -40,11 +42,11 @@ def get_categorical_distrbution(column, filter_rate=0.01):
     # Plot non filtered values
     counts = column.value_counts()
     counts = counts/sum(counts)
-    counts.plot(kind='bar', ax=axs[0], title="Non-filtered bar plot for '" + column.name + "'")
+    counts.plot(kind='bar', ax=axs[0], title="Non-filtered distribution bar plot for '" + column.name + "'")
     
     # Plot filtered values
     counts = counts.drop(counts[counts < filter_rate].index)
     counts['__Filtered_Out__'] = 1 - sum(counts)
-    counts.plot(kind='bar', ax=axs[1], title="Filtered bar plot for '" + column.name + "' with filter_rate=" + str(filter_rate))
+    counts.plot(kind='bar', ax=axs[1], title="Filtered distribution bar plot for '" + column.name + "' with filter_rate=" + str(filter_rate))
     
     plt.show()
