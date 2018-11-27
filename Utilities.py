@@ -27,11 +27,11 @@ def get_numerical_distrbution(column, filter_rate=0):
     sns.distplot(column, label=column.name, ax=axs[0])
     axs[0].axvline(x=mean, color='r', label='Mean: ' + str(mean))
     axs[0].legend()
-    axs[0].set_title('Numerical distribution for ' column.name)
+    axs[0].set_title('Numerical distribution for ' + column.name)
     
     # Plot Boxplot
     sns.boxplot(column, ax=axs[1], linewidth=2.5)
-    axs[1].set_title('Boxplot for ' column.name)
+    axs[1].set_title('Boxplot for ' + column.name)
     
     plt.show()
 
