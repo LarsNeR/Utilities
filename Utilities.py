@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def get_high_correlating_columns(df, threshold=0.9, drop_diagonal=True, drop_inverse=True):
+def get_highly_correlating_columns(df, threshold=0.9, drop_diagonal=True, drop_inverse=True):
     df_corr = df.corr()
     high_corr_cols = np.where(np.abs(df_corr) > threshold)
     col_ixs = zip(high_corr_cols[0], high_corr_cols[1])
